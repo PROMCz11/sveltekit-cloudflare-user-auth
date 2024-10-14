@@ -32,5 +32,5 @@ export const load = async ({ cookies }) => {
         throw redirect(302, "/signup");
     }
 
-    return {userID, email};
+    // return {userID, email};
 }
