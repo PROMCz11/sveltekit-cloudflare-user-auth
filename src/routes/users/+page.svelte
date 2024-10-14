@@ -63,4 +63,8 @@
         display: block;
         width: 100%;
     }
+
+    .user p {
+        text-align: left;
+    }
 </style>
