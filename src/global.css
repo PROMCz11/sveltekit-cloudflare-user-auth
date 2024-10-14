@@ -71,4 +71,22 @@ button {
     border-radius: 0;
     padding: .2rem .4rem;
     border: 1px solid #a1a1a166;
+    cursor: pointer;
+}
+
+button:hover {
+    color: white;
+    border-color: white;
+}
+
+button:active {
+    background-color: white;
+    color: black;
+}
+
+input {
+    background-color: black;
+    color: #a1a1a1;
+    border-radius: 0;
+    border: 1px solid #a1a1a166;
 }
