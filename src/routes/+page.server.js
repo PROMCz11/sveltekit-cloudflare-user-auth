@@ -31,4 +31,6 @@ export const load = async ({ cookies }) => {
     if(!data.length) {
         throw redirect(302, "/signup");
     }
+
+    return {userID, email};
 }
