@@ -1,10 +1,10 @@
 import { supabase } from "$lib/supabaseClient";
 import { SECRET_JWT_KEY } from "$env/static/private";
-import jwt from 'jsonwebtoken';
+import jwt from 'jwt-simple';
 import { redirect } from "@sveltejs/kit";
 
 const generateJWT = (userID, email) => {
-    return jwt.sign({userID: userID, email: email}, SECRET_JWT_KEY);
+    return jwt.encode({userID: userID, email: email}, SECRET_JWT_KEY);
 }
 
 const insertUser = async (username, email, password) => {

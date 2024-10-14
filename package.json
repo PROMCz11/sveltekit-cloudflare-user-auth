@@ -27,6 +27,6 @@
 	"type": "module",
 	"dependencies": {
 		"@supabase/supabase-js": "^2.45.4",
-		"jsonwebtoken": "^9.0.2"
+		"jwt-simple": "^0.5.6"
 	}
 }

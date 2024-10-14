@@ -10,14 +10,15 @@
 
 import { supabase } from "$lib/supabaseClient";
 import { redirect } from "@sveltejs/kit";
-import jwt from 'jsonwebtoken';
+import { SECRET_JWT_KEY } from "$env/static/private";
+import jwt from 'jwt-simple';
 export const load = async ({ cookies }) => {
     const token = cookies.get("token");
     if(!token) {
         throw redirect(302, "/signup");
     }
 
-    const userData = jwt.decode(token);
+    const userData = jwt.decode(token, SECRET_JWT_KEY);
     const userID = userData.userID;
     const email = userData.email;
     const { data } = await supabase
