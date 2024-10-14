@@ -1,10 +1,10 @@
 <script>
-    // export let data;
-    // const { email } = data;
+    export let data;
+    const { email } = data;
 </script>
 
 <main>
-    <!-- <p>Email: {email}</p> -->
+    <p>Email: {email}</p>
 </main>
 
 <style>
