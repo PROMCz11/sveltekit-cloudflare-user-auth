@@ -9,6 +9,10 @@
 
 <style>
     main {
+        min-height: 100vh;
+        min-height: 100svh;
         padding: .5rem;
+        display: grid;
+        place-content: center;
     }
 </style>

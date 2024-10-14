@@ -90,3 +90,12 @@ input {
     border-radius: 0;
     border: 1px solid #a1a1a166;
 }
+
+a {
+    color: #a1a1a1;
+    text-decoration: none;
+}
+
+a:hover {
+    color: white;
+}

@@ -1,13 +1,3 @@
-// import { supabase } from "$lib/supabaseClient";
-
-// export const load = async () => {
-//     const { data } = await supabase
-//     .from("tasks")
-//     .select("*")
-//     const tasks = data
-//     return {tasks}
-// }
-
 import { supabase } from "$lib/supabaseClient";
 import { redirect } from "@sveltejs/kit";
 import { SECRET_JWT_KEY } from "$env/static/private";
