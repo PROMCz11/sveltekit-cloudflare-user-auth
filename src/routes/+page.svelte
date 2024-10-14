@@ -1,10 +1,9 @@
 <script>
     export let data;
-    const { userID, email } = data;
+    const { email } = data;
 </script>
 
 <main>
-    <p>ID: {userID}</p>
     <p>Email: {email}</p>
 </main>
 
