@@ -37,9 +37,6 @@ export const actions = {
         // Generate a JWT token then save it in cookies then redirect to the homepage
         const token = generateJWT(userID, email);
         cookies.set('token', token, {
-            httpOnly: true,
-            secure: true,
-            sameSite: 'strict',
             path: '/',
             maxAge: 60 * 60 * 24 * 7 * 30
         });
