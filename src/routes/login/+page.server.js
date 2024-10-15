@@ -42,8 +42,6 @@ export const actions = {
         const password = formData.get("password");
         // Validate all inputs
         const userID = await checkUserCredentials(email, password);
-
-        // If logged in
         if(!userID) {
             // show an error message
         }

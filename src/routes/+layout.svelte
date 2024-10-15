@@ -56,4 +56,10 @@
         background-color: white;
         color: black;
     }
+
+    @media (max-width: 700px) {
+        ul {
+            gap: 1rem;
+        }
+    }
 </style>
