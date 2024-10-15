@@ -12,11 +12,16 @@ export const load = async ({ cookies }) => {
     const userData = verifiedToken.payload;
     const userID = userData.userID;
     const email = userData.email;
-    const { data } = await supabase
+    const { data, error } = await supabase
     .from("users")
     .select("userID")
     .eq("userID", userID)
     .limit(1);
+
+    if(error) {
+        cookies.delete("token", { path: "/" });
+        throw redirect(302, "/login");
+    }
 
     if(!data.length) {
         cookies.delete("token", { path: "/" });

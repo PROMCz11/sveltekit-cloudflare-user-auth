@@ -5,7 +5,6 @@ import { redirect } from "@sveltejs/kit";
 import { hashPassword } from "$lib/auth";
 
 const generateJWT = async (userID, email) => {
-    // return jwt.encode({userID: userID, email: email}, SECRET_JWT_KEY);
     const token = await jwt.sign({
         userID: userID,
         email: email
@@ -14,6 +13,9 @@ const generateJWT = async (userID, email) => {
 }
 
 const insertUser = async (username, email, password) => {
+    if(!username || !email || !password) {
+        return;
+    }
     const { data, error } = await supabase
     .from('users')
     .insert([
@@ -27,6 +29,7 @@ const insertUser = async (username, email, password) => {
 
     if(error) {
         console.error('Error inserting user:', error);
+        return;
     }
 
     return data[0].userID;
@@ -41,6 +44,11 @@ export const actions = {
         const password = await hashPassword(unhashedPassword);
         // Validate all inputs
         const userID = await insertUser(username, email, password);
+        if(!userID) {
+            return {
+                message: 'Account creation failed. Please try again.'
+            };
+        }
         // Generate a JWT token then save it in cookies then redirect to the homepage
         const token = await generateJWT(userID, email);
         cookies.set('token', token, {

@@ -4,10 +4,19 @@
     const { isUserVar } = data;
     import { isUser } from "$lib/stores";
     $isUser = isUserVar;
+    let errorMessage;
 </script>
 
 <main>
-    <form action="?/signup" method="post" use:enhance>
+    <form action="?/signup" method="post" use:enhance={() => {
+        return async ({ result, update }) => {
+            if(result.data) {
+                errorMessage = result.data.message;
+            }
+
+            update();
+        }
+    }}>
         <h2>Create an account</h2>
         <p>Username</p>
         <input type="text" name="username" placeholder="Enter your username">
@@ -19,6 +28,9 @@
             <button>Signup</button>
         </div>
     </form>
+    {#if errorMessage}
+        <p class="warning">{errorMessage}</p>
+    {/if}
     <p>Already have an account?</p>
     <a href="/login">Login</a>
 </main>
@@ -40,5 +52,9 @@
 
     form {
         padding: .5rem;
+    }
+
+    .warning {
+        color: red;
     }
 </style>
