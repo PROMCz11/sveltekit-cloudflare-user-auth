@@ -7,20 +7,20 @@
 </script>
 
 <main>
-    <form action="?/signup" method="post" use:enhance>
-        <h2>Create an account</h2>
-        <p>Username</p>
-        <input type="text" name="username" placeholder="Enter your username">
+    <form action="?/login" method="post" use:enhance>
+        <h2>Login</h2>
+        <!-- <p>Username</p>
+        <input type="text" name="username" placeholder="Enter your username"> -->
         <p>Email</p>
         <input type="email" name="email" placeholder="example@gmail.com">
         <p>Password</p>
-        <input type="password" name="password" placeholder="Enter a strong password">
+        <input type="password" name="password" placeholder="Enter your password">
         <div>
-            <button>Signup</button>
+            <button>Login</button>
         </div>
     </form>
-    <p>Already have an account?</p>
-    <a href="/login">Login</a>
+    <p>Don't have an account?</p>
+    <a href="/signup">Signup</a>
 </main>
 
 <style>

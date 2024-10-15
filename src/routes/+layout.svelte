@@ -3,6 +3,7 @@
     import { page } from "$app/stores";
     $: home = $page.url.pathname === "/";
     $: users = $page.url.pathname === "/users";
+    $: login = $page.url.pathname === "/login";
     $: signup = $page.url.pathname === "/signup";
     import { isUser } from "$lib/stores";
 </script>
@@ -11,7 +12,11 @@
     <ul>
         <li><a class:active={home} href="/">Home</a></li>
         <li><a class:active={users} href="users">Users</a></li>
-        <li><a class:active={signup} href="signup">Signup</a></li>
+        {#if signup}
+            <li><a class:active={signup} href="signup">Signup</a></li>
+        {:else}
+            <li><a class:active={login} href="login">Login</a></li>
+        {/if}
     </ul>
     {#if $isUser}
         <a href="/logout"><button>Logout</button></a>

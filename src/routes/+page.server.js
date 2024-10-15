@@ -5,7 +5,7 @@ import jwt from '@tsndr/cloudflare-worker-jwt';
 export const load = async ({ cookies }) => {
     const token = cookies.get("token");
     if(!token) {
-        throw redirect(302, "/signup");
+        throw redirect(302, "/login");
     }
 
     const verifiedToken = await jwt.verify(token, SECRET_JWT_KEY);
@@ -20,7 +20,7 @@ export const load = async ({ cookies }) => {
 
     if(!data.length) {
         cookies.delete("token", { path: "/" });
-        throw redirect(302, "/signup");
+        throw redirect(302, "/login");
     }
 
     const isUserVar = true;
