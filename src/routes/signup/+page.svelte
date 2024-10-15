@@ -5,15 +5,17 @@
     import { isUser } from "$lib/stores";
     $isUser = isUserVar;
     let errorMessage;
+    let showLoading = false;
 </script>
 
 <main>
     <form action="?/signup" method="post" use:enhance={() => {
+        showLoading = true;
         return async ({ result, update }) => {
             if(result.data) {
                 errorMessage = result.data.message;
             }
-
+            showLoading = false;
             update();
         }
     }}>
@@ -33,6 +35,13 @@
     {/if}
     <p>Already have an account?</p>
     <a href="/login">Login</a>
+
+    <!-- Loading -->
+    {#if showLoading}
+        <div class="loading">
+            <p>Loading...</p>
+        </div>
+    {/if}
 </main>
 
 <style>
@@ -56,5 +65,14 @@
 
     .warning {
         color: red;
+    }
+
+    .loading {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: black;
     }
 </style>

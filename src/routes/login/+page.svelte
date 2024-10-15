@@ -5,21 +5,21 @@
     import { isUser } from "$lib/stores";
     $isUser = isUserVar;
     let errorMessage;
+    let showLoading = false;
 </script>
 
 <main>
     <form action="?/login" method="post" use:enhance={() => {
+        showLoading = true;
         return async ({ result, update }) => {
             if(result.data) {
                 errorMessage = result.data.message;
             }
-
+            showLoading = false;
             update();
         }
     }}>
         <h2>Login</h2>
-        <!-- <p>Username</p>
-        <input type="text" name="username" placeholder="Enter your username"> -->
         <p>Email</p>
         <input type="email" name="email" placeholder="example@gmail.com">
         <p>Password</p>
@@ -33,6 +33,13 @@
     {/if}
     <p>Don't have an account?</p>
     <a href="/signup">Signup</a>
+
+    <!-- Loading -->
+    {#if showLoading}
+        <div class="loading">
+            <p>Loading...</p>
+        </div>
+    {/if}
 </main>
 
 <style>
@@ -56,5 +63,14 @@
 
     .warning {
         color: red;
+    }
+
+    .loading {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: black;
     }
 </style>

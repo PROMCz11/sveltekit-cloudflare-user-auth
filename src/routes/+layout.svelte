@@ -31,6 +31,7 @@
         top: 0;
         left: 0;
         right: 0;
+        z-index: 2;
         font-size: 1.1rem;
         padding: 1rem;
         background-color: #1a1a1a;
