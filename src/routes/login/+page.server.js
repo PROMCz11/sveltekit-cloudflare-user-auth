@@ -2,6 +2,7 @@ import { supabase } from "$lib/supabaseClient";
 import { SECRET_JWT_KEY } from "$env/static/private";
 import jwt from '@tsndr/cloudflare-worker-jwt';
 import { redirect } from "@sveltejs/kit";
+import { verifyPassword } from "$lib/auth";
 
 const generateJWT = async (userID, email) => {
     const token = await jwt.sign({
@@ -23,7 +24,12 @@ const checkUserCredentials = async (email, password) => {
         return;
     }
 
-    if(user.password === password) {
+    // if(user.password === password) {
+    //     return user.userID;
+    // }
+
+    const isValidPassword = await verifyPassword(user.password, password);
+    if(isValidPassword) {
         return user.userID;
     }
 }

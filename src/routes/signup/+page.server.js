@@ -2,6 +2,7 @@ import { supabase } from "$lib/supabaseClient";
 import { SECRET_JWT_KEY } from "$env/static/private";
 import jwt from '@tsndr/cloudflare-worker-jwt';
 import { redirect } from "@sveltejs/kit";
+import { hashPassword } from "$lib/auth";
 
 const generateJWT = async (userID, email) => {
     // return jwt.encode({userID: userID, email: email}, SECRET_JWT_KEY);
@@ -36,7 +37,8 @@ export const actions = {
         const formData = await request.formData();
         const username = formData.get("username");
         const email = formData.get("email");
-        const password = formData.get("password");
+        const unhashedPassword = formData.get("password");
+        const password = await hashPassword(unhashedPassword);
         // Validate all inputs
         const userID = await insertUser(username, email, password);
         // Generate a JWT token then save it in cookies then redirect to the homepage
