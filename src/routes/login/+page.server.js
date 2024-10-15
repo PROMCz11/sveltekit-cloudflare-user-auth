@@ -41,9 +41,16 @@ export const actions = {
         const email = formData.get("email");
         const password = formData.get("password");
         // Validate all inputs
+        if(!email || !password) {
+            return {
+                message: 'Error, Provide valid credentials.'
+            };
+        }
         const userID = await checkUserCredentials(email, password);
         if(!userID) {
-            // show an error message
+            return {
+                message: 'Loggin in failed. Please try again.'
+            };
         }
         const token = await generateJWT(userID, email);
         cookies.set('token', token, {
