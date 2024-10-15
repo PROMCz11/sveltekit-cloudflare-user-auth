@@ -1,5 +1,9 @@
 <script>
     import { enhance } from "$app/forms";
+    export let data;
+    const { isUserVar } = data;
+    import { isUser } from "$lib/stores";
+    $isUser = isUserVar;
 </script>
 
 <main>

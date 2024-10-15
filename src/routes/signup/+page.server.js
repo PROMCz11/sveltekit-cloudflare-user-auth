@@ -53,3 +53,13 @@ export const actions = {
     }
     
 }
+
+export const load = ({ cookies }) => {
+    const token = cookies.get("token");
+
+    if(token) {
+        throw redirect(303, "/");
+    }
+
+    return {isUserVar: false}
+}

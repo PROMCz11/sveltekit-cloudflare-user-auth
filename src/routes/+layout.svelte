@@ -4,6 +4,7 @@
     $: home = $page.url.pathname === "/";
     $: users = $page.url.pathname === "/users";
     $: signup = $page.url.pathname === "/signup";
+    import { isUser } from "$lib/stores";
 </script>
 
 <nav>
@@ -12,6 +13,9 @@
         <li><a class:active={users} href="users">Users</a></li>
         <li><a class:active={signup} href="signup">Signup</a></li>
     </ul>
+    {#if $isUser}
+        <a href="/logout"><button>Logout</button></a>
+    {/if}
 </nav>
 
 <slot></slot>
@@ -25,6 +29,9 @@
         font-size: 1.1rem;
         padding: 1rem;
         background-color: #1a1a1a;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
 
     ul {

@@ -1,6 +1,8 @@
 <script>
     export let data;
-    const { email } = data;
+    const { email, isUserVar } = data;
+    import { isUser } from "$lib/stores";
+    $isUser = isUserVar;
 </script>
 
 <main>

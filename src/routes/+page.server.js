@@ -19,8 +19,11 @@ export const load = async ({ cookies }) => {
     .limit(1);
 
     if(!data.length) {
+        cookies.delete("token", { path: "/" });
         throw redirect(302, "/signup");
     }
 
-    return {userID, email};
+    const isUserVar = true;
+
+    return {userID, email, isUserVar};
 }
