@@ -41,14 +41,15 @@
                 update();
             }
         }}>
-            <input name="content" type="text" placeholder="Enter task">
+            <!-- svelte-ignore a11y-autofocus -->
+            <input autofocus name="content" type="text" placeholder="Enter task">
         </form>
     </div>
     <div class="task-container">
         {#each tasks as { content, taskID }}
             <div class="task" id={taskID}><p>{content}</p><button on:click={e => {
                 deleteTask(e.target.parentElement.id);
-            }}>Delete</button></div>
+            }}>Done</button></div>
         {/each}
     </div>
 </main>

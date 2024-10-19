@@ -6,9 +6,11 @@
     $: login = $page.url.pathname === "/login";
     $: signup = $page.url.pathname === "/signup";
     import { isUser } from "$lib/stores";
+    import { ProgressBar } from "@prgm/sveltekit-progress-bar";
 </script>
 
 <nav>
+    <ProgressBar color={"white"}/>
     <ul>
         <li><a class:active={home} href="/">Home</a></li>
         <li><a class:active={users} href="users">Users</a></li>
