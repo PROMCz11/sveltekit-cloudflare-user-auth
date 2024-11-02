@@ -42,7 +42,7 @@
             }
         }}>
             <!-- svelte-ignore a11y-autofocus -->
-            <input autofocus name="content" type="text" placeholder="Enter task">
+            <input autofocus name="content" type="text" placeholder="Enter task" autocomplete="off">
         </form>
     </div>
     <div class="task-container">
